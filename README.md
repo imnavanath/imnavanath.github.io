@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://imnavanath.github.io/">
-      <img src="https://github.com/imnavanath/imnavanath.github.io/tree/main/assets/Portfolio-preview.gif" alt="Preview"/>
+      <img src="https://github.com/imnavanath/imnavanath.github.io/tree/main/assets/bmc.png" alt="Preview"/>
   </a>
 </p>
 
