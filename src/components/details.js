@@ -1,15 +1,12 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { MdLocationOn, MdMail } from 'react-icons/md';
-import { AiFillGithub, AiFillMediumSquare } from 'react-icons/ai';
-import { SiTwitter } from 'react-icons/si';
-import { GrLinkedinOption } from 'react-icons/gr';
-import { CgDribbble } from 'react-icons/cg';
-import { RiPhoneFill } from 'react-icons/ri';
-import { FaBehanceSquare, FaBuilding, FaDev, FaFacebook, FaGlobe } from 'react-icons/fa';
-import { skeleton } from '../helper/index.js';
+import { AiFillGithub } from 'react-icons/ai';
+import { GrLinkedinOption, GrWordpress } from 'react-icons/gr';
+import { RiPhoneFill, RiPaypalFill } from 'react-icons/ri';
+import { FaBuilding, FaDev, FaFacebook, FaGlobe } from 'react-icons/fa';
 
-const ListItem = ( { icon, title, value, link, skeleton = false } ) => {
+const ListItem = ( {icon, title, value, link} ) => {
 	return (
 		<a
 			href={link}
@@ -19,14 +16,10 @@ const ListItem = ( { icon, title, value, link, skeleton = false } ) => {
 		>
 			<span className="w-2 m-2">{icon}</span>
 			<div className="flex-grow font-medium px-2">{title}</div>
-			<div
-			className={`${
-				skeleton ? 'flex-grow' : ''
-			} text-sm font-normal text-right mr-2 ml-3 ${link ? 'truncate' : ''}`}
-			>
+			<div className={`text-sm font-normal text-right mr-2 ml-3 ${link ? 'truncate' : ''}`}>
 				<div
 					style={{
-					wordBreak: 'break-word',
+						wordBreak: 'break-word',
 					}}
 				>
 					{value}
@@ -36,31 +29,12 @@ const ListItem = ( { icon, title, value, link, skeleton = false } ) => {
 	);
 };
 
-function Details ( profile, loading, social, github ) {
-	const renderskeleton = () => {
-		let array = [];
-		for ( let index = 0; index < 4; index++ ) {
-			array.push(
-				<ListItem
-					key={index}
-					skeleton={true}
-					icon={skeleton({ width: 'w-4', height: 'h-4' })}
-					title={skeleton({ width: 'w-24', height: 'h-4' })}
-					value={skeleton({ width: 'w-full', height: 'h-4' })}
-				/>
-			);
-		}
-
-		return array;
-	};
-
+function Details ( {profile, social, github} ) {
 	return (
 		<div className="card shadow-lg compact bg-base-100">
 			<div className="card-body">
 				<div className="text-base-content text-opacity-60">
-					{loading || !profile ? (
-						renderskeleton()
-					) : (
+					{
 						<Fragment>
 							{profile.location && (
 								<ListItem
@@ -74,6 +48,7 @@ function Details ( profile, loading, social, github ) {
 									icon={<FaBuilding className="mr-2" />}
 									title="Company:"
 									value={profile.company}
+									link={'https://brainstormforce.com/'}
 								/>
 							)}
 							<ListItem
@@ -82,14 +57,6 @@ function Details ( profile, loading, social, github ) {
 								value={github.username}
 								link={`https://github.com/${github.username}`}
 							/>
-							{typeof social.twitter !== 'undefined' && social.twitter && (
-								<ListItem
-									icon={<SiTwitter className="mr-2" />}
-									title="Twitter:"
-									value={social.twitter}
-									link={`https://twitter.com/${social.twitter}`}
-								/>
-							)}
 							{typeof social.linkedin !== 'undefined' && social.linkedin && (
 								<ListItem
 									icon={<GrLinkedinOption className="mr-2" />}
@@ -98,36 +65,12 @@ function Details ( profile, loading, social, github ) {
 									link={`https://www.linkedin.com/in/${social.linkedin}`}
 								/>
 							)}
-							{typeof social.dribbble !== 'undefined' && social.dribbble && (
+							{typeof social.wordpress !== 'undefined' && social.wordpress && (
 								<ListItem
-									icon={<CgDribbble className="mr-2" />}
-									title="Dribbble:"
-									value={social.dribbble}
-									link={`https://dribbble.com/${social.dribbble}`}
-								/>
-							)}
-							{typeof social.behance !== 'undefined' && social.behance && (
-								<ListItem
-									icon={<FaBehanceSquare className="mr-2" />}
-									title="Behance:"
-									value={social.behance}
-									link={`https://www.behance.net/${social.behance}`}
-								/>
-							)}
-							{typeof social.facebook !== 'undefined' && social.facebook && (
-								<ListItem
-									icon={<FaFacebook className="mr-2" />}
-									title="Facebook:"
-									value={social.facebook}
-									link={`https://www.facebook.com/${social.facebook}`}
-								/>
-							)}
-							{typeof social.medium !== 'undefined' && social.medium && (
-								<ListItem
-									icon={<AiFillMediumSquare className="mr-2" />}
-									title="Medium:"
-									value={social.medium}
-									link={`https://medium.com/@${social.medium}`}
+									icon={<GrWordpress className="mr-2" />}
+									title="WordPress:"
+									value={social.wordpress}
+									link={`https://profiles.wordpress.org/${social.wordpress}`}
 								/>
 							)}
 							{typeof social.dev !== 'undefined' && social.dev && (
@@ -146,6 +89,14 @@ function Details ( profile, loading, social, github ) {
 									link={social.website}
 								/>
 							)}
+							{typeof social.facebook !== 'undefined' && social.facebook && (
+								<ListItem
+									icon={<FaFacebook className="mr-2" />}
+									title="Facebook:"
+									value={social.facebook}
+									link={`https://www.facebook.com/${social.facebook}`}
+								/>
+							)}
 							{typeof social.phone !== 'undefined' && social.phone && (
 								<ListItem
 									icon={<RiPhoneFill className="mr-2" />}
@@ -162,8 +113,16 @@ function Details ( profile, loading, social, github ) {
 									link={`mailto:${social.email}`}
 								/>
 							)}
+							{typeof social.paypal !== 'undefined' && social.paypal && (
+								<ListItem
+									icon={<RiPaypalFill className="mr-2" />}
+									title="Paypal:"
+									value={social.paypal}
+									link={`https://www.paypal.me/${social.paypal}`}
+								/>
+							)}
 						</Fragment>
-					)}
+					}
 				</div>
 			</div>
 		</div>
@@ -172,7 +131,6 @@ function Details ( profile, loading, social, github ) {
 
 Details.propTypes = {
 	profile: PropTypes.object,
-	loading: PropTypes.bool.isRequired,
 	social: PropTypes.object.isRequired,
 	github: PropTypes.object.isRequired,
 };
@@ -182,7 +140,6 @@ ListItem.propTypes = {
 	title: PropTypes.node,
 	value: PropTypes.node,
 	link: PropTypes.string,
-	skeleton: PropTypes.bool,
 };
 
 export default Details;

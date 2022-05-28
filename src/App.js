@@ -1,5 +1,6 @@
+import React from "react";
 import config from './profile.config';
-import Profile from './Profile';
+import Profile from './components/Profile';
 
 function App() {
 	return <Profile config={config} />;

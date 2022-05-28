@@ -1,8 +1,7 @@
-import { skeleton } from '../helper/index.js';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const ListItem = ({ time, degree, institution }) => (
+const ListItem = ( {time, degree, institution} ) => (
 	<li className="mb-5 ml-4">
 		<div className="absolute w-2 h-2 bg-base-300 rounded-full border border-base-300 mt-1.5" style={{ left: '-4.5px' }}></div>
 		<div className="my-0.5 text-xs">{time}</div>
@@ -11,21 +10,7 @@ const ListItem = ({ time, degree, institution }) => (
 	</li>
 );
 
-function Education ( loading, education ) {
-	const renderskeleton = () => {
-		let array = [];
-		for ( let index = 0; index < 2; index++ ) {
-			array.push(
-				<ListItem
-					key={index}
-					time={skeleton({width: 'w-5/12', height: 'h-4'})}
-					degree={skeleton({ width: 'w-6/12', height: 'h-4', className: 'my-1.5' })}
-					institution={skeleton({ width: 'w-6/12', height: 'h-3' })}
-				/>
-			);
-		}
-		return array;
-	};
+function Education ( {education} ) {
 
 	return (
 		<>
@@ -34,18 +19,14 @@ function Education ( loading, education ) {
 					<div className="card-body">
 						<div className="mx-3">
 							<h5 className="card-title">
-								{ loading ? (
-									skeleton({ width: 'w-32', height: 'h-8' })
-								) : (
+								{
 									<span className="opacity-70">Education</span>
-								)}
+								}
 							</h5>
 						</div>
 						<div className="text-base-content text-opacity-60">
 							<ol className="relative border-l border-base-300 border-opacity-30 my-2 mx-4">
-								{ loading ? (
-									renderskeleton()
-								) : (
+								{
 									<Fragment>
 										{ education.map((item, index) => (
 											<ListItem
@@ -56,7 +37,7 @@ function Education ( loading, education ) {
 											/>
 										))}
 									</Fragment>
-								)}
+								}
 							</ol>
 						</div>
 					</div>
@@ -67,7 +48,6 @@ function Education ( loading, education ) {
 };
 
 Education.propTypes = {
-	loading: PropTypes.bool.isRequired,
 	education: PropTypes.array.isRequired,
 };
 

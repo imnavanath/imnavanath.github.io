@@ -1,17 +1,8 @@
-import { useState, Fragment, useEffect } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
-export function skeleton ( {
-	width = null,
-	height = null,
-	style = {},
-	shape = 'rounded-full',
-	className = null,
-	} ) {
-		return (
-			<div className={`bg-base-300 animate-pulse ${shape}${className ? ` ${className}` : ''}${width ? ` ${width}` : ''}${height ? ` ${height}` : ''}`} style={style}/>
-		);
-};
+import colors from './colors.json';
+import PortfolioIcons from '../helper/icons.js';
+import { AiOutlineStar, AiOutlineFork } from 'react-icons/ai';
 
 export function getInitialTheme ( themeConfig ) {
 	if ( themeConfig.disableSwitch ) {
@@ -20,10 +11,10 @@ export function getInitialTheme ( themeConfig ) {
 
 	if (
 		typeof window !== 'undefined' &&
-		!(localStorage.getItem('gitprofile-theme') === null) &&
-		themeConfig.themes.includes(localStorage.getItem('gitprofile-theme'))
+		!(localStorage.getItem('portfolio-theme') === null) &&
+		themeConfig.themes.includes(localStorage.getItem('portfolio-theme'))
 	) {
-	  let theme = localStorage.getItem('gitprofile-theme');
+	  let theme = localStorage.getItem('portfolio-theme');
 	  return theme;
 	}
 
@@ -35,24 +26,66 @@ export function getInitialTheme ( themeConfig ) {
 };
 
 export function languageColor ( language ) {
-	return 'gray';
+	if ( typeof colors[language] !== 'undefined' ) {
+		return colors[language].color;
+	} else {
+		return 'gray';
+	}
 };
 
-export function sanitizeConfig ( config ) {
-	const customTheme =
-	typeof config.themeConfig !== 'undefined' &&
-	typeof config.themeConfig.customTheme !== 'undefined' ? config.themeConfig.customTheme : {
-		primary: '#fc055b',
-		secondary: '#219aaf',
-		accent: '#e8d03a',
-		neutral: '#2A2730',
-		'base-100': '#E3E3ED',
-		'--rounded-box': '3rem',
-		'--rounded-btn': '3rem',
-	};
+export function classNames(...classes) {
+	return classes.filter(Boolean).join(' ')
+};
 
-	const themes =
-	typeof config.themeConfig !== 'undefined' && typeof config.themeConfig.themes !== 'undefined' ? config.themeConfig.themes : [
+export function renderCustomProjects( projects ) {
+	return projects.map( ( item, index ) => (
+		<a
+			className="card shadow-lg compact bg-base-100 cursor-pointer"
+			href={item.html_url}
+			key={index}
+			target={ '_blank' }
+		>
+			<div className="flex justify-between flex-col p-8 h-full w-full">
+				<div>
+					<div className="flex items-center opacity-60">
+						{ PortfolioIcons.folder }
+						<span>
+							<h5 className="card-title text-lg">{item.name}</h5>
+						</span>
+					</div>
+					<p className="mb-5 mt-1 text-base-content text-opacity-60 text-sm">
+						{item.description}
+					</p>
+				</div>
+				<div className="flex justify-between text-sm text-base-content text-opacity-60">
+					<div className="flex flex-grow">
+						<span className="mr-3 flex items-center">
+							<AiOutlineStar className="mr-0.5" />
+							<span>{item.stargazers_count}</span>
+						</span>
+						<span className="flex items-center">
+							<AiOutlineFork className="mr-0.5" />
+							<span>{item.forks_count}</span>
+						</span>
+					</div>
+					<div>
+						<span className="flex items-center">
+						<div
+							className="w-3 h-3 rounded-full mr-1 opacity-60"
+							style={ { backgroundColor: languageColor(item.language ) } }
+						/>
+						<span>{item.language}</span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</a>
+	));
+}
+
+export function sanitizeConfig ( config ) {
+
+	const themes = typeof config.config.themeConfig !== 'undefined' && typeof config.config.themeConfig.themes !== 'undefined' ? config.config.themeConfig.themes : [
 		'light',
 		'dark',
 		'cupcake',
@@ -87,120 +120,108 @@ export function sanitizeConfig ( config ) {
 
 	return {
 		github: {
-			username: config.github.username,
+			username: config.config.github.username,
 			sortBy:
-				typeof config.github.sortBy !== 'undefined'
-				? config.github.sortBy
+				typeof config.config.github.sortBy !== 'undefined'
+				? config.config.github.sortBy
 				: 'stars',
 			limit:
-				typeof config.github.limit !== 'undefined' ? config.github.limit : 8,
+				typeof config.config.github.limit !== 'undefined' ? config.config.github.limit : 8,
 			exclude: {
-				forks:
-				typeof config.github.exclude !== 'undefined' &&
-				typeof config.github.exclude.forks !== 'undefined'
-					? config.github.exclude.forks
-					: false,
 				projects:
-				typeof config.github.exclude !== 'undefined' &&
-				typeof config.github.exclude.projects !== 'undefined'
-					? config.github.exclude.projects
+				typeof config.config.github.exclude !== 'undefined' &&
+				typeof config.config.github.exclude.projects !== 'undefined'
+					? config.config.github.exclude.projects
 					: [],
 			},
+			professional: typeof config.config.github.professional !== 'undefined' ? config.config.github.professional : [],
+			personal: typeof config.config.github.personal !== 'undefined' ? config.config.github.personal : [],
+			misc: typeof config.config.github.misc !== 'undefined' ? config.config.github.misc : [],
 		},
 		social: {
 			linkedin:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.linkedin !== 'undefined'
-				? config.social.linkedin
+				typeof config.config.social !== 'undefined' &&
+				typeof config.config.social.linkedin !== 'undefined'
+				? config.config.social.linkedin
 				: '',
-			twitter:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.twitter !== 'undefined'
-				? config.social.twitter
+			wordpress:
+				typeof config.config.social !== 'undefined' &&
+				typeof config.config.social.wordpress !== 'undefined'
+				? config.config.social.wordpress
 				: '',
 			facebook:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.facebook !== 'undefined'
-				? config.social.facebook
+				typeof config.config.social !== 'undefined' &&
+				typeof config.config.social.facebook !== 'undefined'
+				? config.config.social.facebook
 				: '',
-			dribbble:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.dribbble !== 'undefined'
-				? config.social.dribbble
-				: '',
-			behance:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.behance !== 'undefined'
-				? config.social.behance
-				: '',
-			medium:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.medium !== 'undefined'
-				? config.social.medium
+			paypal:
+				typeof config.config.social !== 'undefined' &&
+				typeof config.config.social.paypal !== 'undefined'
+				? config.config.social.paypal
 				: '',
 			dev:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.dev !== 'undefined'
-				? config.social.dev
+				typeof config.config.social !== 'undefined' &&
+				typeof config.config.social.dev !== 'undefined'
+				? config.config.social.dev
 				: '',
 			website:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.website !== 'undefined'
-				? config.social.website
+				typeof config.config.social !== 'undefined' &&
+				typeof config.config.social.website !== 'undefined'
+				? config.config.social.website
 				: '',
 			phone:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.phone !== 'undefined'
-				? config.social.phone
+				typeof config.config.social !== 'undefined' &&
+				typeof config.config.social.phone !== 'undefined'
+				? config.config.social.phone
 				: '',
 			email:
-				typeof config.social !== 'undefined' &&
-				typeof config.social.email !== 'undefined'
-				? config.social.email
+				typeof config.config.social !== 'undefined' &&
+				typeof config.config.social.email !== 'undefined'
+				? config.config.social.email
 				: '',
 		},
-		skills: typeof config.skills !== 'undefined' ? config.skills : [],
-		experiences: typeof config.experiences !== 'undefined' ? config.experiences : [],
-		education: typeof config.education !== 'undefined' ? config.education : [],
+		skills: typeof config.config.skills !== 'undefined' ? config.config.skills : {},
+		experiences: typeof config.config.experiences !== 'undefined' ? config.config.experiences : [],
+		tools: typeof config.config.tools !== 'undefined' ? config.config.tools : [],
+		education: typeof config.config.education !== 'undefined' ? config.config.education : [],
 		googleAnalytics: {
 			id:
-				typeof config.googleAnalytics !== 'undefined' &&
-				typeof config.googleAnalytics.id !== 'undefined'
-				? config.googleAnalytics.id
+				typeof config.config.googleAnalytics !== 'undefined' &&
+				typeof config.config.googleAnalytics.id !== 'undefined'
+				? config.config.googleAnalytics.id
 				: '',
 		},
 		themeConfig: {
 			defaultTheme:
-				typeof config.themeConfig !== 'undefined' &&
-				typeof config.themeConfig.defaultTheme !== 'undefined'
-				? config.themeConfig.defaultTheme
+				typeof config.config.themeConfig !== 'undefined' &&
+				typeof config.config.themeConfig.defaultTheme !== 'undefined'
+				? config.config.themeConfig.defaultTheme
 				: themes[0],
 			disableSwitch:
-				typeof config.themeConfig !== 'undefined' &&
-				typeof config.themeConfig.disableSwitch !== 'undefined'
-				? config.themeConfig.disableSwitch
+				typeof config.config.themeConfig !== 'undefined' &&
+				typeof config.config.themeConfig.disableSwitch !== 'undefined'
+				? config.config.themeConfig.disableSwitch
 				: false,
 			respectPrefersColorScheme:
-				typeof config.themeConfig !== 'undefined' &&
-				typeof config.themeConfig.respectPrefersColorScheme !== 'undefined'
-				? config.themeConfig.respectPrefersColorScheme
+				typeof config.config.themeConfig !== 'undefined' &&
+				typeof config.config.themeConfig.respectPrefersColorScheme !== 'undefined'
+				? config.config.themeConfig.respectPrefersColorScheme
 				: false,
-			themes: themes,
-			customTheme: customTheme,
+			themes: themes
 		},
 	};
 };
 
-function LazyImage ( placeholder, src, alt, ...rest ) {
+function LazyImage ( {placeholder, src, alt, ...rest} ) {
 	const [ loading, setLoading ] = useState(true);
 
-	useEffect(() => {
+	useEffect( () => {
 		const imageToLoad = new Image();
 		imageToLoad.src = src;
 		imageToLoad.onload = () => {
 			setLoading(false);
 		};
-	}, [src]);
+	}, [src] );
 
 	return (
 		<Fragment>

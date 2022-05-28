@@ -1,19 +1,17 @@
-import config from './profile.config';
-
-export default {
-	purge: [ './src/**/*.@(js|jsx)' ],
+module.exports = {
 	content: ['./src/*.{js,jsx}', './src/**/*.{js,jsx}'],
 	theme: {
 		extend: {},
 	},
 	plugins: [require('daisyui')],
 	daisyui: {
-		logs: false,
+		styled: true,
+		themes: true,
+		base: true,
+		utils: true,
+		logs: true,
 		rtl: false,
 		prefix: "",
-		themes: [
-			...config.themeConfig.themes,
-			{ procyon: config.themeConfig.customTheme },
-		],
+		darkTheme: "dark",
 	},
-};
+}

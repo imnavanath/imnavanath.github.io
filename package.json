@@ -1,7 +1,7 @@
 {
   "name": "imnavanath",
-  "description": "My React based portfolio is ready by using NPM, Tailwind.",
-  "homepage": "https://imnavanath.github.io/",
+  "description": "My React based portfolio is ready by using React, NPM, Tailwind.",
+  "homepage": ".",
   "version": "1.0.0",
   "license": "Apache-2.0",
   "private": true,
@@ -13,17 +13,13 @@
     "url": "https://github.com/imnavanath/issues"
   },
   "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "^5.0.1",
-    "react-router-dom": "^5.2.0"
+    "@headlessui/react": "^1.6.3",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode production",
     "deploy": "gh-pages -d build"
   },
   "browserslist": {
@@ -39,14 +35,26 @@
     ]
   },
   "devDependencies": {
-    "axios": "^0.26.1",
-    "react-helmet-async": "^1.2.3",
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
     "daisyui": "^2.11.0",
     "gh-pages": "^3.1.0",
-    "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.23",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss-cli": "^9.1.0",
+    "postcss-loader": "^7.0.0",
+    "react-helmet-async": "^1.2.3",
     "react-icons": "^4.3.1",
-    "sass": "^1.42.1"
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.0.24",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
   },
   "keywords": [
     "imnavanath",

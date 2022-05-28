@@ -1,20 +1,33 @@
-const path = require('path');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-	entry: {
-		admin: path.resolve(
-			__dirname,
-			'src/index.js'
-		)
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: "babel-loader"
+				}
+			},
+			{
+			test: /\.css$/,
+			use: [
+					MiniCssExtractPlugin.loader,
+					"css-loader", "postcss-loader",
+				],
+			},
+		]
 	},
-	output: {
-		filename: '[name].js',
-		path: path.resolve(__dirname, 'dist')
-	},
-	resolve: {
-		extensions: ['js', 'jsx'],
-		alias: {
-			'@Portfolio': path.resolve(__dirname, 'src/'),
-		}
-	}
+	plugins: [
+		new MiniCssExtractPlugin( {
+			filename: "style.css",
+			chunkFilename: "style.css"
+		} ),
+		new HtmlWebPackPlugin( {
+			template: "./src/index.html",
+			filename: "./index.html"
+		} ),
+	]
 };

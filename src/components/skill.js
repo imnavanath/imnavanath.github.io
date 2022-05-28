@@ -1,47 +1,96 @@
+import React from "react";
 import PropTypes from 'prop-types';
-import { skeleton } from '../helper/index.js';
 
-function Skill ( loading, skills ) {
-	const renderskeleton = () => {
-		let array = [];
-		for ( let index = 0; index < 12; index++ ) {
-			array.push(
-			<div key={index}>
-				{skeleton({ width: 'w-16', height: 'h-4', className: 'm-1' })}
-			</div>
-			);
+import {
+	DiHtml5,
+	DiCss3,
+	DiJavascript,
+	DiJqueryLogo,
+	DiBootstrap,
+	DiGhostSmall,
+	DiReact,
+	DiPhp,
+	DiMysql,
+	DiGit,
+	DiWordpress
+} from "react-icons/di";
+function Skill ( {skills} ) {
+
+	const skillsMarkup = Object.entries( skills ).map( ( [ key, icon ] ) => {
+		let iconTag = '';
+
+		switch ( key ) {
+			case 'HTML':
+				iconTag = <DiHtml5 className="w-8 h-8" />;
+				break;
+
+			case 'CSS':
+				iconTag = <DiCss3 className="w-8 h-8" />;
+				break;
+
+			case 'JavaScript':
+				iconTag = <DiJavascript className="w-8 h-8" />;
+				break;
+
+			case 'jQuery':
+				iconTag = <DiJqueryLogo className="w-8 h-8" />;
+				break;
+
+			case 'Bootstrap':
+				iconTag = <DiBootstrap className="w-8 h-8" />;
+				break;
+
+			case 'Tailwind':
+				iconTag = <DiGhostSmall className="w-8 h-8" />;
+				break;
+
+			case 'React':
+				iconTag = <DiReact className="w-8 h-8" />;
+				break;
+
+			case 'PHP':
+				iconTag = <DiPhp className="w-8 h-8" />;
+				break;
+
+			case 'MySQL':
+				iconTag = <DiMysql className="w-8 h-8" />;
+				break;
+
+			case 'Git':
+				iconTag = <DiGit className="w-8 h-8" />;
+				break;
+
+			case 'WordPress':
+				iconTag = <DiWordpress className="w-8 h-8" />;
+				break;
 		}
 
-		return array;
-	};
+		return (
+			<div
+				key={key}
+				className="m-1 leading-none text-xs inline-flex items-center font-bold leading-sm px-4 py-4 badge-ghost bg-opacity-90 rounded flex flex-col"
+			>
+				{ iconTag }
+				{ <span className="font-semibold mt-2 opacity-70"> { key } </span> }
+			</div>
+		);
+	} );
 
 	return (
 		<>
-			{typeof skills !== 'undefined' && skills.length !== 0 && (
-				<div className="card shadow-lg compact bg-base-100">
+			{typeof skills !== 'undefined' && (
+				<div className="card shadow-lg compact mb-6 bg-base-100">
 					<div className="card-body">
 						<div className="mx-3">
 							<h5 className="card-title">
-								{loading ? (
-									skeleton({ width: 'w-32', height: 'h-8' })
-								) : (
+								{
 									<span className="opacity-70"> Tech Stack </span>
-								)}
+								}
 							</h5>
 						</div>
 						<div className="p-3 flow-root">
-							<div className="-m-1 flex flex-wrap justify-center">
-								{ loading
-									? renderskeleton()
-									: skills.map((skill, index) => (
-										<div
-										key={index}
-										className="m-1 text-xs inline-flex items-center font-bold leading-sm px-3 py-1 badge-primary bg-opacity-90 rounded-full"
-										>
-											{skill}
-										</div>
-									))
-								}
+							<div className="-m-1 flex flex-wrap justify-between">
+								{ skillsMarkup }
 							</div>
 						</div>
 					</div>
@@ -52,8 +101,7 @@ function Skill ( loading, skills ) {
 };
 
 Skill.propTypes = {
-	loading: PropTypes.bool.isRequired,
-	skills: PropTypes.array.isRequired,
+	skills: PropTypes.object.isRequired,
 };
 
 export default Skill;
