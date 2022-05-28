@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://imnavanath.github.io/">
-      <img src="https://github.com/imnavanath/imnavanath.github.io/tree/main/assets/Portfolio-preview.gif" alt="Preview"/>
+      <img src="https://raw.githubusercontent.com/imnavanath/imnavanath.github.io/main/assets/bmc.png" alt="Preview"/>
   </a>
 </p>
 
@@ -75,7 +75,7 @@ To view a live example, **[click here](https://imnavanath.github.io/)**.
 ## 💖 Support
 
 <a href="https://www.buymeacoffee.com/navanathbhosale" target="_blank">
-  <img src="https://github.com/imnavanath/imnavanath.github.io/tree/main/assets/bmc.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >
+  <img src="https://raw.githubusercontent.com/imnavanath/imnavanath.github.io/main/assets/bmc.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >
 </a>
 
 ## 📄 License
