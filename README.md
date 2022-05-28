@@ -66,9 +66,19 @@ To view a live example, **[click here](https://imnavanath.github.io/)**.
 
   Follow the following instructions to execute the portfolio on your local setup.
 
-  1. Clone the repo using the command - ``` git clone https://github.com/imnavanath/imnavanath.github.io.git ```
-  2. Install required node modules - ``` npm install ``` Before this make your system has Node installed & configured like [this](https://www.freecodecamp.org/news/how-to-install-node-js-and-npm-on-windows-2/).
-  3. Execute next command - ``` npm start ```
+  1. Clone the repo using the command - 
+  ```
+  git clone https://github.com/imnavanath/imnavanath.github.io.git 
+  ```
+  2. Install required node modules - 
+  ``` 
+  npm install 
+  ``` 
+  Before this make your system has Node installed & configured like [this](https://www.freecodecamp.org/news/how-to-install-node-js-and-npm-on-windows-2/).
+  3. Execute next command - 
+  ``` 
+  npm start 
+  ```
   4. That's it! Open this [localhost link](http://localhost:3000/) in borwser.
 </details>
 
