@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { MdLocationOn, MdMail } from 'react-icons/md';
-import { AiFillGithub } from 'react-icons/ai';
+import { AiFillGithub, AiFillFilePdf } from 'react-icons/ai';
 import { GrLinkedinOption, GrWordpress, GrDocumentPdf } from 'react-icons/gr';
 import { RiPhoneFill, RiPaypalFill } from 'react-icons/ri';
 import { FaBuilding, FaDev, FaFacebook, FaGlobe } from 'react-icons/fa';
@@ -53,7 +53,7 @@ function Details ( {profile, social, github} ) {
 							)}
 							{typeof social.resume !== 'undefined' && social.resume && (
 								<ListItem
-									icon={<GrDocumentPdf className="mr-2" />}
+									icon={<AiFillFilePdf className="mr-2" />}
 									title="Curriculum Vitae:"
 									value={'View'}
 									link={social.resume}
