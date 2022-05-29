@@ -144,6 +144,11 @@ export function sanitizeConfig ( config ) {
 				typeof config.config.social.linkedin !== 'undefined'
 				? config.config.social.linkedin
 				: '',
+			resume:
+				typeof config.config.social !== 'undefined' &&
+				typeof config.config.social.resume !== 'undefined'
+				? config.config.social.resume
+				: '',
 			wordpress:
 				typeof config.config.social !== 'undefined' &&
 				typeof config.config.social.wordpress !== 'undefined'

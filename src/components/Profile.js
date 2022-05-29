@@ -194,6 +194,7 @@ Profile.propTypes = {
 		}).isRequired,
 		social: PropTypes.shape({
 			linkedin: PropTypes.string,
+			resume: PropTypes.string,
 			paypal: PropTypes.string,
 			facebook: PropTypes.string,
 			wordpress: PropTypes.string,

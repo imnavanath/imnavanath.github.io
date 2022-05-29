@@ -65,6 +65,7 @@ const config = {
 	},
 	social: {
 		linkedin: 'navanath-bhosale',
+		resume: 'https://drive.google.com/file/d/1z1bi1b52jklqETN5_hCthwlDsaSLSzZV/view?usp=sharing',
 		paypal: 'NavanathBhosale',
 		facebook: 'navnath.bhosale.3',
 		instagram: 'i_am_navanath',
@@ -95,7 +96,7 @@ const config = {
 		'Laragon',
 		'Blackfire',
 		'WordPress',
-		'Grammerly',
+		'Grammarly',
 		'Slack',
 		'Google Meet',
 		'Desktime',
@@ -125,8 +126,8 @@ const config = {
 			to: '2018',
 		},
 		{
-			institution: 'Pimpri Chinchwad College of Engineering (BE)',
-			degree: 'Bachelor of Computer Science',
+			institution: 'Pimpri Chinchwad College of Engineering',
+			degree: 'Bachelor of Computer Science (BE)',
 			from: '2013',
 			to: '2017',
 		},

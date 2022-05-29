@@ -1,7 +1,6 @@
 import React from "react";
-import { AiOutlineControl } from 'react-icons/ai';
+import { IoColorWandOutline } from "react-icons/io5";
 import PropTypes from 'prop-types';
-import Icons from "../helper/icons";
 import PortfolioIcons from '../helper/icons.js';
 function Theme ( { theme, setTheme, themeConfig } ) {
 	const changeTheme = (e, selectedTheme) => {
@@ -35,8 +34,8 @@ function Theme ( { theme, setTheme, themeConfig } ) {
 								tabIndex={0}
 								className="btn btn-ghost m-1 normal-case opacity-50"
 							>
-								<AiOutlineControl className="inline-block w-5 h-5 stroke-current md:mr-2" />
-								<span className="hidden md:inline">Change Theme</span>
+								<IoColorWandOutline className="inline-block w-5 h-5 stroke-current md:mr-2" />
+								<span className="hidden md:inline">Switch Theme</span>
 								{ PortfolioIcons.theme }
 							</div>
 							<div
