@@ -65,7 +65,7 @@ const config = {
 	},
 	social: {
 		linkedin: 'navanath-bhosale',
-		resume: 'https://drive.google.com/file/d/1g-mVwQerMLjLXx2X1yRdr2p8XZC3Rqyc/view',
+		resume: 'https://drive.google.com/file/d/1rQ5qjxKvWOFoqYbUPZ4G6VYgP1TxCp3g/view',
 		paypal: 'NavanathBhosale',
 		facebook: 'navnath.bhosale.3',
 		instagram: 'i_am_navanath',
