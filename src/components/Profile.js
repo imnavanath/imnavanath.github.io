@@ -1,6 +1,6 @@
 import { HelmetProvider } from 'react-helmet-async';
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
-import { Avatar, Theme, Details, Skill, Experience, Education, ProfessionalProject, PersonalProject, MiscProject, Tools, AboutMe } from './index.js';
+import { Avatar, Theme, Details, Skill, Experience, Education, ProjectsTabs, Tools, AboutMe } from './index.js';
 import { getInitialTheme, sanitizeConfig } from '../helper/index.js';
 
 import PropTypes from 'prop-types';
@@ -122,16 +122,10 @@ function Profile( config ) {
 								<div className="lg:col-span-2 col-span-1">
 									<AboutMe/>
 
-									<ProfessionalProject
-										projects={sanitizedConfig.github.professional}
-									/>
-
-									<PersonalProject
-										projects={ professionlProjects }
-									/>
-
-									<MiscProject
-										projects={ miscProjects }
+									<ProjectsTabs
+										professional={sanitizedConfig.github.professional}
+										personal={professionlProjects}
+										misc={miscProjects}
 									/>
 
 									<Skill

@@ -14,6 +14,7 @@ import {
 	DiGit,
 	DiWordpress
 } from "react-icons/di";
+import { SiNodedotjs, SiTypescript, SiSass } from "react-icons/si";
 function Skill ( {skills} ) {
 
 	const skillsMarkup = Object.entries( skills ).map( ( [ key, icon ] ) => {
@@ -62,6 +63,18 @@ function Skill ( {skills} ) {
 
 			case 'WordPress':
 				iconTag = <DiWordpress className="w-8 h-8" />;
+				break;
+
+			case 'Node.js':
+				iconTag = <SiNodedotjs className="w-8 h-8" />;
+				break;
+
+			case 'TypeScript':
+				iconTag = <SiTypescript className="w-8 h-8" />;
+				break;
+
+			case 'Sass':
+				iconTag = <SiSass className="w-8 h-8" />;
 				break;
 		}
 

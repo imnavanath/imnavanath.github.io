@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build output (generated from src/)
+build/
+dist/
+artifact/
+
+# Lock files
+package-lock.json
+composer.lock
+
+# Source maps
+*.map
+
+# Minified assets
+*.min.js
+*.min.css
+
+# Grunt intermediate files
+.grunt/
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/

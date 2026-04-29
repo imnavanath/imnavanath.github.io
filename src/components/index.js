@@ -7,6 +7,7 @@ import Theme from './theme.js';
 import ProfessionalProject from './professionalProjects.js';
 import PersonalProject from './personalProjects.js';
 import MiscProject from './miscProjects.js';
+import ProjectsTabs from './projectsTabs.js';
 import Tools from './tools.js';
 import AboutMe from './aboutMe.js';
 
@@ -20,6 +21,7 @@ export {
 	ProfessionalProject,
 	PersonalProject,
 	MiscProject,
+	ProjectsTabs,
 	Tools,
 	AboutMe
 };

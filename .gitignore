@@ -22,4 +22,9 @@ vendor/
 *.tgz
 
 # dotenv environment variables file
-.env
+.DS_Store
+.claude
+.agent/
+.agents/
+.claude/
+config.bat
