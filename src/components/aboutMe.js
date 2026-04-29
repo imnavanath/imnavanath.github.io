@@ -2,36 +2,44 @@ import React from "react";
 
 function AboutMe () {
 	return (
-		<div className="mockup-code mb-6">
-			<pre data-prefix="$"><code>npm init welcome</code></pre>
+		<div className="card shadow-lg compact bg-base-100 mb-6">
+			<div className="card-body">
+				<h2 className="card-title opacity-80">Hi, I'm Navanath 👋</h2>
+				<p className="text-base-content text-opacity-70 mt-2 leading-relaxed">
+					I'm a <span className="font-semibold">Lead Developer at Brainstorm Force</span>,
+					building full-stack WordPress products since 2018. I lead day-to-day development
+					across the <span className="font-semibold">SureProducts</span> ecosystem -
+					SureRank, SureCookie, SureDash and SureMembers - alongside the flagship
+					<span className="font-semibold"> Astra</span> theme and
+					<span className="font-semibold"> Spectra</span> page builder.
+				</p>
+				<p className="text-base-content text-opacity-70 mt-3 leading-relaxed">
+					I care about lightweight, accessible UIs, fast page loads, and shipping
+					features that real users feel. I've recently been pairing my workflow with
+					AI-assisted development (Claude Code, Cursor) to ship more, faster - without
+					sacrificing review quality.
+				</p>
 
-			<pre data-prefix=">" className="text-warning"><code>greetings...</code></pre>
-			<pre data-prefix=">" className="text-warning"></pre>
-
-			<pre data-prefix=">" className="text-success"><code>Hi👋</code></pre>
-			<pre data-prefix=">" className="text-success"><code>I'm Navanath. </code></pre>
-
-			<pre data-prefix=">" className="text-success"><code>With a formal background in Engineering, paired my proven success in WordPress development.</code></pre>
-			<pre data-prefix=">" className="text-success"><code>I'm a full-stack WordPress Developer and have been working with it since 2018 in Brainstorm Force.</code></pre>
-			<pre data-prefix=">" className="text-success"><code></code></pre>
-
-			<pre data-prefix=">" className="text-success"><code>Proud to say that I'm part of WordPress's fastest #1 popular lightweight and beautiful Astra theme.</code></pre>
-			<pre data-prefix=">" className="text-success"><code></code></pre>
-
-			<pre data-prefix=">" className="text-success"><code>I'm incredibly passionate about learning and developing</code></pre>
-			<pre data-prefix=">" className="text-success"><code>- new features 🚀</code></pre>
-			<pre data-prefix=">" className="text-success"><code>- user-focused UIs 😍</code></pre>
-			<pre data-prefix=">" className="text-success"><code>- WordPress applications 💻</code></pre>
-			<pre data-prefix=">" className="text-success"><code>by considering the front-end frameworks like HTML, CSS, JS, jQuery, and React.</code></pre>
-			<pre data-prefix=">" className="text-success"><code></code></pre>
-
-			<pre data-prefix=">" className="text-success"><code>Here is my portfolio. You will see here my background, skillsets, projects, etc.</code></pre>
-			<pre data-prefix=">" className="text-success"><code>If you like my portfolio, make sure to ⭐ the repository and follow me.</code></pre>
-			<pre data-prefix=">" className="text-success"><code></code></pre>
-
-			<pre data-prefix=">" className="text-success"><code>Thank you.! 💜</code></pre>
+				<div className="stats stats-vertical lg:stats-horizontal shadow mt-5 bg-base-200">
+					<div className="stat">
+						<div className="stat-title">PRs merged</div>
+						<div className="stat-value text-primary">360</div>
+						<div className="stat-desc">last 12 months</div>
+					</div>
+					<div className="stat">
+						<div className="stat-title">Reviews given</div>
+						<div className="stat-value">1,048</div>
+						<div className="stat-desc">last 12 months</div>
+					</div>
+					<div className="stat">
+						<div className="stat-title">Active repos</div>
+						<div className="stat-value">21</div>
+						<div className="stat-desc">SureProducts (SureRank, SureDash, SureMembers, SureCookie: Includes Plugins + SaaS Apps)</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
-};
+}
 
-export default AboutMe
+export default AboutMe;
